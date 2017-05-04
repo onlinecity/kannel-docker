@@ -1,0 +1,27 @@
+version: '2'
+services:
+  kannel:
+    build: .
+    entrypoint:
+      - /usr/local/sbin/bearerbox
+      - /etc/kannel/kannel.conf
+  smsbox:
+    build: .
+    entrypoint:
+      - /usr/local/sbin/smsbox
+      - /etc/kannel/kannel.conf
+    links:
+      - kannel:bearerbox
+    ports:
+      - "13013:13013"
+  fakesmsc:
+    build: .
+    entrypoint:
+      - /wait-for-it.sh
+    command: [
+      "bearerbox:20000", "--",
+      "/kannel-svn-trunk/test/fakesmsc", "-H", "bearerbox", "-r", "20000",
+      "-m", "0", "foo"
+    ]
+    links:
+      - kannel:bearerbox
