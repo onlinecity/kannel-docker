@@ -20,7 +20,7 @@ services:
       - /wait-for-it.sh
     command: [
       "bearerbox:20000", "--",
-      "/kannel-svn-trunk/test/fakesmsc", "-H", "bearerbox", "-r", "20000",
+      "/usr/local/bin/fakesmsc", "-H", "bearerbox", "-r", "20000",
       "-m", "0", "foo"
     ]
     links:
