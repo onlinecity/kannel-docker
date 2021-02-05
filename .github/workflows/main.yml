@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: onlinecity/action-docker-build
-          ref: v1
+          ref: v2
           path: actions-build
           token: ${{ secrets.GIT_DEPLOY_TOKEN }}
       - uses: ./actions-build
