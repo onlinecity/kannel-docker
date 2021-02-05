@@ -1,0 +1,21 @@
+name: CI
+
+on: [push]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+        with:
+          repository: onlinecity/action-docker-build
+          ref: v1
+          path: actions-build
+          token: ${{ secrets.GIT_DEPLOY_TOKEN }}
+      - uses: ./actions-build
+        with:
+          repository: ${{ github.repository }}
+          gcloud: ${{ secrets.GCLOUD_SERVICE_KEY }}
+          pip_index_url: ${{ secrets.PIP_INDEX_URL }}
+          image: kannel
