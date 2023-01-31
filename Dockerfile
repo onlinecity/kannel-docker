@@ -1,6 +1,6 @@
-FROM debian:bullseye-slim AS builder
+FROM alpine:edge
 
-RUN apt-get update && apt-get install -y kannel
+RUN apk update && apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing/ kannel
 
 
 COPY kannel.conf /etc/kannel/kannel.conf
