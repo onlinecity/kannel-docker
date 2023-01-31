@@ -3,25 +3,14 @@ services:
   kannel:
     build: .
     entrypoint:
-      - /usr/local/sbin/bearerbox
+      - /usr/sbin/bearerbox
       - /etc/kannel/kannel.conf
   smsbox:
     build: .
     entrypoint:
-      - /usr/local/sbin/smsbox
+      - /usr/sbin/smsbox
       - /etc/kannel/kannel.conf
     links:
       - kannel:bearerbox
     ports:
       - "13013:13013"
-  fakesmsc:
-    build: .
-    entrypoint:
-      - /wait-for-it.sh
-    command: [
-      "bearerbox:20000", "--",
-      "/usr/local/bin/fakesmsc", "-H", "bearerbox", "-r", "20000",
-      "-m", "0", "foo"
-    ]
-    links:
-      - kannel:bearerbox
