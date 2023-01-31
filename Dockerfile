@@ -1,4 +1,4 @@
-FROM debian:bullseye AS builder
+FROM debian:bullseye-slim AS builder
 
 RUN apt-get update && apt-get install -y kannel
 
