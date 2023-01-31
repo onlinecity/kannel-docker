@@ -11,7 +11,7 @@ RUN apk add --no-cache ca-certificates bash subversion \
   libxml2 pcre musl hiredis openssl \
   libxml2-dev pcre-dev build-base libtool musl-dev bison \
   hiredis-dev openssl-dev
-RUN svn checkout --trust-server-cert --non-interactive -r 5186 https://svn.kannel.org/gateway/trunk \
+RUN svn checkout --trust-server-cert --non-interactive -r 5329 https://svn.kannel.org/gateway/trunk \
   kannel-svn-trunk
 
 WORKDIR /kannel-svn-trunk
