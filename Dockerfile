@@ -4,6 +4,7 @@ RUN apk update && apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/
 
 
 COPY kannel.conf /etc/kannel/kannel.conf
+RUN mkdir -p /usr/local/sbin
 RUN ln /usr/bin/smsbox /usr/local/sbin/smsbox
 RUN ln /usr/bin/bearerbox /usr/local/sbin/bearerbox
 
