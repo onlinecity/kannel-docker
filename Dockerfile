@@ -1,6 +1,6 @@
 FROM debian:bookworm-slim
 
-RUN apt-get update && apt-get install -y kannel=1.4.5-12
+RUN apt-get update && apt-get install -y kannel=1.4.5-12 wget
 
 
 COPY kannel.conf /etc/kannel/kannel.conf
